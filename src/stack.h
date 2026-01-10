@@ -31,6 +31,6 @@ public:
     bool isEmpty();
 };
 
-#include "Stack.cpp"
+#include "stack.cpp"
 
 #endif

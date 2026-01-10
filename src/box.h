@@ -4,8 +4,6 @@
 #include <iostream>
 #include <vector>
 
-
-
 class ArrayBox;
 class StringBox;
 class ObjectBox;
