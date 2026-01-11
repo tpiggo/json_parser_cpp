@@ -19,6 +19,4 @@ public:
     std::string *getError(std::string error);
     std::string *getError();
 };
-
-#include "filereader.cpp"
 #endif

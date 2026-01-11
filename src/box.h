@@ -50,22 +50,22 @@ public:
 class ObjectBox : public Box
 {
 private:
-    std::map<std::string, Box *> *value;
+    std::map<std::string, Box *> value;
 
 public:
-    ObjectBox(std::map<std::string, Box *> *aValue)
+    ObjectBox(std::map<std::string, Box *> aValue)
     {
         value = aValue;
     }
     ~ObjectBox()
     {
-        for (auto &element : *value)
+        for (auto &element : value)
         {
             delete &(element.second);
         }
     }
 
-    std::map<std::string, Box *> *getValue()
+    std::map<std::string, Box *> getValue()
     {
         return value;
     }
@@ -150,7 +150,7 @@ void BoxVisitor::readString(StringBox & p)
 
 void BoxVisitor::readObjectBox(ObjectBox &p)
 {
-    for (auto &element : *(p.getValue()))
+    for (auto &element : p.getValue())
     {
         std::cout << element.first << ": ";
         element.second->accept(*this);

@@ -5,7 +5,6 @@
 #include <numeric>
 #include "filereader.h"
 #include "stack.h"
-#include "box.h"
 #include "reader.h"
 #include "invalid_json.h"
 
@@ -80,7 +79,7 @@ ObjectBox *readJson(Stack<char> *s, FileReader *fr);
 
 ObjectBox *readJson(Stack<char> *s, FileReader *fr)
 {
-    auto *json = new map<string, Box *>();
+    auto json = map<string, Box *>();
     while (fr->hasNext())
     {
         char ch = findNext(fr);
@@ -98,7 +97,7 @@ ObjectBox *readJson(Stack<char> *s, FileReader *fr)
         }
         Box *value = readValue(s, fr);
         ch = findNext(fr);
-        json->insert({foundString, value});
+        json.insert({foundString, value});
         if (nextToken(ch) == s->peek())
         {
             s->pop();
@@ -195,7 +194,6 @@ Box *readFromFile(const char *fileName)
 {
     Stack<char> s = Stack<char>();
     FileReader fr(fileName);
-    map<string, Box> json = map<string, Box>();
     while (fr.hasNext())
     {
         if (s.isEmpty())

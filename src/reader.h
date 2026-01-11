@@ -6,5 +6,4 @@
 #include "box.h"
 Box *readFromFile(const char *fileName);
 Box *readFromFile(std::string fileName);
-#include "reader.cpp"
 #endif
